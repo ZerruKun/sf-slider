@@ -31,10 +31,13 @@ a {
     color: #FFFFFF;
 }
 
-/*Контейнер для контента секции*/
 .container {
     max-width: 1263px;
     margin: 0 auto;
+}
+
+.hidden {
+    display: none;
 }
 
 /*Кнопки переключения картинок для небольших экранов*/
@@ -164,8 +167,8 @@ a {
     padding-left: 50px;
 }
 
-.project-image img {
-    width: 674px;
+.project-image{
+    max-width: 674px;
 }
 
 /*Media 980 (подходит для 768)*/
