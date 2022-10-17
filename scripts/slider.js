@@ -40,8 +40,8 @@ const getImages = () => {
         let imageItem = 
             `<img 
                 class="${index === 0 ? "" : "hidden"}"
-                src="./images/image${index+1}.jpg" 
-                alt="repaired apartment ${index+1}">`
+                src="${el.scr}" 
+                alt="${el.alt}">`
         images.innerHTML += imageItem;
     });
 }
