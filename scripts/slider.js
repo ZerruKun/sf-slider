@@ -29,7 +29,7 @@ const repairingInfo = [
 ]
 
 const images = document.querySelector(".project-image");
-const additionalMenuItem = document.querySelector(".additional-menu-item");
+const dots = document.querySelector(".additional-menu-list");
 const buttonLeft = document.querySelector(".button-left");
 const buttonRight = document.querySelector(".button-right");
 const projectsPreviousButton = document.querySelector(".projects-previous-button");
@@ -38,12 +38,24 @@ const projectsNextButton = document.querySelector(".projects-next-button");
 const getImages = () => {
     repairingInfo.forEach((el, index) => {
         let imageItem = 
-                `<img 
-                    class="${index === 0? "" : "hidden"}"
-                    src="./images/image${index+1}.jpg" 
-                    alt="repaired apartment ${index+1}">`
+            `<img 
+                class="${index === 0 ? "" : "hidden"}"
+                src="./images/image${index+1}.jpg" 
+                alt="repaired apartment ${index+1}">`
         images.innerHTML += imageItem;
     });
 }
 
+const getDots = () => {
+    const dotsNumber = repairingInfo.length;
+    for(let i = 0; i < dotsNumber; i++) {
+        let dot = 
+            `<li class="additional-menu-item ${i === 0 ? "active-dot" : ""}">
+                <div></div>
+            </li>`;
+        dots.innerHTML += dot;
+    }
+}
+
 getImages();
+getDots();

@@ -76,7 +76,8 @@ a {
     text-transform: uppercase;
 }
 
-.projects-menu-item a:hover {
+.projects-menu-item a:hover,
+.projects-menu-item a:active {
     color: #E3B873;
     text-decoration: underline;
 }
@@ -159,6 +160,15 @@ a {
 }
 
 .additional-menu-item div:hover {
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+.active-dot {
+    height: 12px;
+    width: 12px;
+    margin-right: 18px;
+    border-radius: 30px;
     background: #FFFFFF;
     cursor: pointer;
 }
