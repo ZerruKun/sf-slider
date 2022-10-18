@@ -111,6 +111,42 @@ const setButtonActions = () => {
     })
 }
 
+const setDotsActions = () => {
+    const dotItems = document.querySelectorAll(".additional-menu-item");
+    dotItems.forEach ((el, index) => {
+        el.addEventListener("click", () => {
+            images.childNodes[activeProjectInfo].classList.add("hidden");
+            repairingDescription.childNodes[activeProjectInfo].classList.add("hidden");
+            mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.remove("active-link");
+            dots.childNodes[activeProjectInfo].classList.remove("active-dot");
+            activeProjectInfo = index;
+            images.childNodes[activeProjectInfo].classList.remove("hidden");
+            repairingDescription.childNodes[activeProjectInfo].classList.remove("hidden");
+            mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.add("active-link");
+            dots.childNodes[activeProjectInfo].classList.add("active-dot");
+        })
+    })
+}
+
+const setLinksActions = () => {
+    const linkItems = document.querySelectorAll(".projects-menu-item");
+    linkItems.forEach((el, index) => {
+        el.addEventListener("click", () => {
+            images.childNodes[activeProjectInfo].classList.add("hidden");
+            repairingDescription.childNodes[activeProjectInfo].classList.add("hidden");
+            mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.remove("active-link");
+            dots.childNodes[activeProjectInfo].classList.remove("active-dot");
+            activeProjectInfo = index;
+            images.childNodes[activeProjectInfo].classList.remove("hidden");
+            repairingDescription.childNodes[activeProjectInfo].classList.remove("hidden");
+            mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.add("active-link");
+            dots.childNodes[activeProjectInfo].classList.add("active-dot");
+        })
+    })
+}
+
 getInfo();
 getDots();
 setButtonActions();
+setDotsActions();
+setLinksActions();
