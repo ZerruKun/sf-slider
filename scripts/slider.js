@@ -1,3 +1,6 @@
+// Дополнительно учтены кнопки из мобильной версии
+
+// Массив данных для обратотки
 const repairingInfo = [
   {
     projectsMenuItem: "Rostov-on-Don, Admiral",
@@ -28,31 +31,35 @@ const repairingInfo = [
   },
 ];
 
+//Основная функция
 const showRepairingInfo = (repairingInfo) => {
 
+    // Проверка на наличие массима и элементов в нём
     if(!repairingInfo || !repairingInfo.length) {
         return;
     }
 
+    // Поиск необходимых элементов на странице
     const images = document.querySelector(".project-image");
     const mainNavigation = document.querySelector(".projects-menu-list");
     const repairingDescription = document.querySelector(".project-detailes-list");
     const dots = document.querySelector(".additional-menu-list");
     const buttons = document.querySelectorAll(".project-button");
 
+    // Вспомогательная переменная для отслеживания активного "слайда"
     let activeProjectInfo = 0;
 
+    // Получение значений из массива и отрисовка информации на странице, установка первично активных элементов
     const getInfo = () => {
     repairingInfo.forEach((el, index) => {
         let image = 
             `<img 
                 class="${index === 0 ? "" : "hidden"}" 
-                data-index="${index}" 
                 src="${el.scr}" 
                 alt="${el.alt}">`;
         images.innerHTML += image;
         let detailes = 
-            `<div class="project-detailes-item ${index === 0 ? "" : "hidden"}" data-index="${index}"> 
+            `<div class="project-detailes-item ${index === 0 ? "" : "hidden"}"> 
                 <div class="city-detailes">
                     <h3>City:</h3>
                     <span>${el.cityDetailes}</span>
@@ -72,13 +79,14 @@ const showRepairingInfo = (repairingInfo) => {
             </div>`;
         repairingDescription.innerHTML += detailes;
         let menuItem = 
-            `<li class="projects-menu-item" data-index="${index}">
+            `<li class="projects-menu-item">
                 <a class="${index === 0 ? "active-link" : ""}" href="#">${el.projectsMenuItem}</a>
             </li>`;
         mainNavigation.innerHTML += menuItem;
     });
     };
 
+    // Получение количества точек дополнительного меню, установка активной
     const getDots = () => {
     const dotsNumber = repairingInfo.length;
     for (let i = 0; i < dotsNumber; i++) {
@@ -90,6 +98,8 @@ const showRepairingInfo = (repairingInfo) => {
     }
     };
 
+
+    // Вспомогательные функции для скрытия и отображения активных элементов соответственно
     const hideProject = () => {
         images.childNodes[activeProjectInfo].classList.add("hidden");
         repairingDescription.childNodes[activeProjectInfo].classList.add("hidden");
@@ -104,6 +114,7 @@ const showRepairingInfo = (repairingInfo) => {
         dots.childNodes[activeProjectInfo].classList.add("active-dot");
     }
 
+    // Установка действий для кнопок прокрутки "слайдов"
     const setButtonsActions = () => {
         buttons.forEach(el => {
             el.addEventListener("click", event => {
@@ -125,6 +136,7 @@ const showRepairingInfo = (repairingInfo) => {
         })
     }
 
+    // Установка действий для точек и ссылок основного меню
     const setitemsActions = (className) => {
         const items = document.querySelectorAll(className);
         items.forEach ((el, index) => {
@@ -137,6 +149,7 @@ const showRepairingInfo = (repairingInfo) => {
         })
     }
 
+    // Вызов ранее описанных функций
     getInfo();
     getDots();
     setButtonsActions();
@@ -144,6 +157,7 @@ const showRepairingInfo = (repairingInfo) => {
     setitemsActions(".projects-menu-item");
 }
 
+// Вызов основной функции по завершению загрузке HTML
 document.addEventListener("DOMContentLoaded", () => {
     showRepairingInfo(repairingInfo);
 });

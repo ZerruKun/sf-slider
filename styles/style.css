@@ -1,4 +1,6 @@
-/*Общие*/
+/* Стилизация также взята из предыдущего задания по вёрстке, медиа-запросы тоже перенесены*/
+
+/* Общие */
 @font-face {
     src: url("../fonts/NunitoSans-Regular.ttf");
     font-family: "NunitoSans Regular";
@@ -36,7 +38,7 @@ a {
     margin: 0 auto;
 }
 
-/*Кнопки переключения картинок для небольших экранов*/
+/* Кнопки переключения картинок для небольших экранов */
 .projects-previous-button,
 .projects-next-button {
     display: none;
@@ -45,7 +47,7 @@ a {
     border-radius: 50%;
 }
 
-/*Стилизация страницы*/
+/* Стилизация страницы */
 .projects {
     max-width: 1440px;
     margin: 0px auto;
@@ -77,6 +79,7 @@ a {
     text-decoration: underline;
 }
 
+/* Вспомогательный стиль для ссылок основного меню*/
 .active-link {
     color: #E3B873;
     text-decoration: underline;
@@ -99,6 +102,7 @@ a {
     color: #E3B873;
 }
 
+/* Полоса из макета */
 .completed-line {
     width: 155px;
     height: 2px;
@@ -155,7 +159,6 @@ a {
 .additional-menu-list {
     display: flex;
     margin: 0px 18px 0 30px;
-
 }
 
 .additional-menu-item div {
@@ -171,6 +174,7 @@ a {
     cursor: pointer;
 }
 
+/* Вспомогательный стиль для точек */
 .active-dot {
     height: 12px;
     width: 12px;
@@ -188,12 +192,12 @@ a {
     max-width: 674px;
 }
 
-
+/* Для скрытия элементов */
 .hidden {
     display: none;
 }
 
-/*Media 980 (подходит для 768)*/
+/* Media 980 (подходит для 768) */
 @media screen and (max-width: 980px) {
     .projects-container {
         padding: 50px 0px;
@@ -244,7 +248,7 @@ a {
     }
 }
 
-/*Media 479 (подходит для 375)*/
+/* Media 479 (подходит для 375) */
 @media screen and (max-width: 479px) {
     .container {
         margin: 0 18px;
@@ -322,7 +326,7 @@ a {
     }
 }
 
-/*Media 374 (подходит для 320)*/
+/* Media 374 (подходит для 320) */
 @media screen and (max-width: 374px) {
     .projects-br:last-child {
         display: none;
