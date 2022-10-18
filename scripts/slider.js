@@ -84,14 +84,25 @@ const getDots = () => {
   }
 };
 
-const setButtonActions = () => {
+const hideProject = () => {
+    images.childNodes[activeProjectInfo].classList.add("hidden");
+    repairingDescription.childNodes[activeProjectInfo].classList.add("hidden");
+    mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.remove("active-link");
+    dots.childNodes[activeProjectInfo].classList.remove("active-dot");
+}
+
+const showProject = () => {
+    images.childNodes[activeProjectInfo].classList.remove("hidden");
+    repairingDescription.childNodes[activeProjectInfo].classList.remove("hidden");
+    mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.add("active-link");
+    dots.childNodes[activeProjectInfo].classList.add("active-dot");
+}
+
+const setButtonsActions = () => {
     buttons.forEach(el => {
         el.addEventListener("click", event => {
             event.preventDefault();
-            images.childNodes[activeProjectInfo].classList.add("hidden");
-            repairingDescription.childNodes[activeProjectInfo].classList.add("hidden");
-            mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.remove("active-link");
-            dots.childNodes[activeProjectInfo].classList.remove("active-dot");
+            hideProject();
             if(el.classList.contains("right")) {
                 activeProjectInfo++;
                 if(activeProjectInfo > (repairingInfo.length-1)) {
@@ -103,50 +114,24 @@ const setButtonActions = () => {
                     activeProjectInfo = repairingInfo.length-1;
                 }
             }
-            images.childNodes[activeProjectInfo].classList.remove("hidden");
-            repairingDescription.childNodes[activeProjectInfo].classList.remove("hidden");
-            mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.add("active-link");
-            dots.childNodes[activeProjectInfo].classList.add("active-dot");
+            showProject();
         }) 
     })
 }
 
-const setDotsActions = () => {
-    const dotItems = document.querySelectorAll(".additional-menu-item");
-    dotItems.forEach ((el, index) => {
+const setitemsActions = (className) => {
+    const items = document.querySelectorAll(className);
+    items.forEach ((el, index) => {
         el.addEventListener("click", () => {
-            images.childNodes[activeProjectInfo].classList.add("hidden");
-            repairingDescription.childNodes[activeProjectInfo].classList.add("hidden");
-            mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.remove("active-link");
-            dots.childNodes[activeProjectInfo].classList.remove("active-dot");
+            hideProject();
             activeProjectInfo = index;
-            images.childNodes[activeProjectInfo].classList.remove("hidden");
-            repairingDescription.childNodes[activeProjectInfo].classList.remove("hidden");
-            mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.add("active-link");
-            dots.childNodes[activeProjectInfo].classList.add("active-dot");
-        })
-    })
-}
-
-const setLinksActions = () => {
-    const linkItems = document.querySelectorAll(".projects-menu-item");
-    linkItems.forEach((el, index) => {
-        el.addEventListener("click", () => {
-            images.childNodes[activeProjectInfo].classList.add("hidden");
-            repairingDescription.childNodes[activeProjectInfo].classList.add("hidden");
-            mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.remove("active-link");
-            dots.childNodes[activeProjectInfo].classList.remove("active-dot");
-            activeProjectInfo = index;
-            images.childNodes[activeProjectInfo].classList.remove("hidden");
-            repairingDescription.childNodes[activeProjectInfo].classList.remove("hidden");
-            mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.add("active-link");
-            dots.childNodes[activeProjectInfo].classList.add("active-dot");
+            showProject();
         })
     })
 }
 
 getInfo();
 getDots();
-setButtonActions();
-setDotsActions();
-setLinksActions();
+setButtonsActions();
+setitemsActions(".additional-menu-item");
+setitemsActions(".projects-menu-item");
