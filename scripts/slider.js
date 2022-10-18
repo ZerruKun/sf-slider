@@ -10,7 +10,7 @@ const repairingInfo = [
   },
   {
     projectsMenuItem: "Sochi Thieves",
-    cityDetailes: "Sochi Thieves",
+    cityDetailes: "Sochi Thieves <br><br>",
     apartmentAreaDetailes: "105 m2",
     repairTimeDetailes: "4 months",
     repairCostDetailes: "Upon request",
@@ -32,21 +32,24 @@ const images = document.querySelector(".project-image");
 const mainNavigation = document.querySelector(".projects-menu-list");
 const repairingDescription = document.querySelector(".project-detailes-list");
 const dots = document.querySelector(".additional-menu-list");
-const buttonLeft = document.querySelector(".button-left");
-const buttonRight = document.querySelector(".button-right");
-const projectsPreviousButton = document.querySelector(".projects-previous-button");
-const projectsNextButton = document.querySelector(".projects-next-button");
+const leftArrow = document.querySelector(".button-left");
+const rightArrow = document.querySelector(".button-right");
+const leftButton = document.querySelector(".projects-previous-button");
+const rightButton = document.querySelector(".projects-next-button");
+
+let activeProjectInfo = 0;
 
 const getInfo = () => {
   repairingInfo.forEach((el, index) => {
     let image = 
         `<img 
-            class="${index === 0 ? "" : "hidden"}"
+            class="${index === 0 ? "" : "hidden"}" 
+            data-index="${index}" 
             src="${el.scr}" 
             alt="${el.alt}">`;
     images.innerHTML += image;
     let detailes = 
-        `<div class="project-detailes-item ${index === 0 ? "" : "hidden"}"> 
+        `<div class="project-detailes-item ${index === 0 ? "" : "hidden"}" data-index="${index}"> 
             <div class="city-detailes">
                 <h3>City:</h3>
                 <span>${el.cityDetailes}</span>
@@ -66,7 +69,7 @@ const getInfo = () => {
         </div>`;
     repairingDescription.innerHTML += detailes;
     let menuItem = 
-        `<li class="projects-menu-item">
+        `<li class="projects-menu-item" data-index="${index}">
             <a class="${index === 0 ? "active-link" : ""}" href="#">${el.projectsMenuItem}</a>
         </li>`;
     mainNavigation.innerHTML += menuItem;
@@ -86,3 +89,35 @@ const getDots = () => {
 
 getInfo();
 getDots();
+
+rightArrow.addEventListener("click", (event) => {
+    event.preventDefault();
+    images.childNodes[activeProjectInfo].classList.add("hidden");
+    repairingDescription.childNodes[activeProjectInfo].classList.add("hidden");
+    mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.remove("active-link");
+    dots.childNodes[activeProjectInfo].classList.remove("active-dot");
+    activeProjectInfo++;
+    if(activeProjectInfo > (repairingInfo.length-1)) {
+        activeProjectInfo = 0;
+    }
+    images.childNodes[activeProjectInfo].classList.remove("hidden");
+    repairingDescription.childNodes[activeProjectInfo].classList.remove("hidden");
+    mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.add("active-link");
+    dots.childNodes[activeProjectInfo].classList.add("active-dot");
+})
+
+leftArrow.addEventListener("click", (event) => {
+    event.preventDefault();
+    images.childNodes[activeProjectInfo].classList.add("hidden");
+    repairingDescription.childNodes[activeProjectInfo].classList.add("hidden");
+    mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.remove("active-link");
+    dots.childNodes[activeProjectInfo].classList.remove("active-dot");
+    activeProjectInfo--;
+    if(activeProjectInfo < 0) {
+        activeProjectInfo = repairingInfo.length-1;
+    }
+    images.childNodes[activeProjectInfo].classList.remove("hidden");
+    repairingDescription.childNodes[activeProjectInfo].classList.remove("hidden");
+    mainNavigation.childNodes[activeProjectInfo].childNodes[1].classList.add("active-link");
+    dots.childNodes[activeProjectInfo].classList.add("active-dot");
+})
