@@ -33,7 +33,7 @@ const repairingInfo = [
 
 //Основная функция
 const showRepairingInfo = (repairingInfo) => {
-  // Проверка на наличие массима и элементов в нём
+  // Проверка на наличие массива и элементов в нём
   if (!repairingInfo || !repairingInfo.length) {
     return;
   }
