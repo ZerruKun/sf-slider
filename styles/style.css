@@ -36,10 +36,6 @@ a {
     margin: 0 auto;
 }
 
-.hidden {
-    display: none;
-}
-
 /*Кнопки переключения картинок для небольших экранов*/
 .projects-previous-button,
 .projects-next-button {
@@ -76,8 +72,12 @@ a {
     text-transform: uppercase;
 }
 
-.projects-menu-item a:hover,
-.projects-menu-item a:active {
+.projects-menu-item a:hover {
+    color: #E3B873;
+    text-decoration: underline;
+}
+
+.active-link {
     color: #E3B873;
     text-decoration: underline;
 }
@@ -112,18 +112,18 @@ a {
     color: #FFFFFF;
 }
 
-.project-detailes {
+.project-detailes-item {
     max-width: 500px;
     display: flex;
     flex-wrap: wrap;
 }
 
-.project-detailes div {
+.project-detailes-item div {
     min-width: 200px;
     padding-top: 35px;
 }
 
-.project-detailes span {
+.project-detailes-item span {
     font-size: 13px;
     line-height: 21px;
     color: #FFFFFF;
@@ -181,6 +181,11 @@ a {
     max-width: 674px;
 }
 
+
+.hidden {
+    display: none;
+}
+
 /*Media 980 (подходит для 768)*/
 @media screen and (max-width: 980px) {
     .projects-container {
@@ -221,7 +226,7 @@ a {
         padding-left: 0px;
     }
 
-    .project-detailes {
+    .project-detailes-item {
         justify-content: center;
     }
 
@@ -265,21 +270,21 @@ a {
         display: none;
     }
 
-    .project-detailes {
+    .project-detailes-item {
         padding-top: 304px;
         justify-content: left;
     }
 
-    .project-detailes div {
+    .project-detailes-item div {
         min-width: fit-content;
         padding-top: 27px;
     }
 
-    .project-detailes div:nth-child(1) {
+    .project-detailes-item div:nth-child(1) {
         padding-right: 75px;
     }
 
-    .project-detailes div:nth-child(3) {
+    .project-detailes-item div:nth-child(3) {
         padding-right: 40px;
     }
 
@@ -333,12 +338,12 @@ a {
         right: 3px;
     }
 
-    .project-detailes div:nth-child(1),
-    .project-detailes div:nth-child(3) {
+    .project-detailes-item div:nth-child(1),
+    .project-detailes-item div:nth-child(3) {
         padding-right: 30px;
     }
 
-    .project-detailes div {
+    .project-detailes-item div {
         padding-right: 0px;
     }
 }
