@@ -99,6 +99,13 @@ a {
     color: #E3B873;
 }
 
+.completed-line {
+    width: 155px;
+    height: 2px;
+    border-radius: 30px;
+    background: #E3B873;
+}
+
 .project-discription h3 {
     color: #E3B873;
     font-size: 18px;
